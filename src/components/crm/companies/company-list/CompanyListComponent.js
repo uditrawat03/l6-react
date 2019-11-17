@@ -1,26 +1,27 @@
 import React, { Component } from "react";
 import Grid from "../../../../services/Grid";
+import { CompanyConsumer } from "./CompanyContext";
 
 class CompanyListComponent extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      columns: [
-        { name: "Code", field: "code" },
-        { name: "Name", field: "name" }
-      ]
-    };
   }
 
   render() {
     return (
-      <Grid
-        data={this.props.companies}
-        getData={this.props.getCompanies}
-        isLoader={this.props.isLoader}
-        columns={this.state.columns}
-      />
+      <CompanyConsumer>
+        {value => {
+          console.log(value);
+          return (
+            <Grid
+              data={value.companies}
+              getData={value.getCompanies}
+              isLoader={value.isLoader}
+              columns={value.columns}
+            />
+          );
+        }}
+      </CompanyConsumer>
     );
   }
 }

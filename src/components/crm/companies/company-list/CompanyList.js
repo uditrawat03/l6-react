@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CompanyListComponent from "./CompanyListComponent";
 import { getMethod } from "../../../../services/ApiService";
 import CompanySearchComponent from "./CompanySearchComponent";
+import { CompanyProvider } from "./CompanyContext";
 
 class CompanyList extends Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class CompanyList extends Component {
     };
   }
 
-  getCompanies = (param, cb) => {
-    const url = `crm/companies${param}`;
+  getCompanies = (page, limit) => {
+    const url = `crm/companies?page=${page}&limit=${limit}`;
     getMethod(url).then(res => {
       this.setState({
         companies: res.data,
@@ -25,22 +26,24 @@ class CompanyList extends Component {
 
   render() {
     return (
-      <div className="columns">
-        <div className="column">
-          <div className="box">
-            <CompanyListComponent
-              companies={this.state.companies}
-              getCompanies={this.getCompanies}
-              isLoader={this.state.isLoader}
-            />
+      <CompanyProvider>
+        <div className="columns">
+          <div className="column">
+            <div className="box">
+              <CompanyListComponent
+                companies={this.state.companies}
+                getCompanies={this.getCompanies}
+                isLoader={this.state.isLoader}
+              />
+            </div>
+          </div>
+          <div className="column is-one-third">
+            <div className="box">
+              <CompanySearchComponent />
+            </div>
           </div>
         </div>
-        <div className="column is-one-third">
-          <div className="box">
-            <CompanySearchComponent />
-          </div>
-        </div>
-      </div>
+      </CompanyProvider>
     );
   }
 }

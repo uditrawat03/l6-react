@@ -16,12 +16,12 @@ class CompanySearchComponent extends Component {
           </div>
         </div>
 
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link">Search</button>
+        <div className="field is-grouped">
+          <div className="control">
+            <button className="button is-link">Search</button>
           </div>
-          <div class="control">
-            <button class="button is-link is-light">Cancel</button>
+          <div className="control">
+            <button className="button is-link is-light">Cancel</button>
           </div>
         </div>
       </React.Fragment>
