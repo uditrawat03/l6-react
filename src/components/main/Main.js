@@ -5,9 +5,7 @@ class Main extends Component {
   render() {
     return (
       <section className="section has-background-light">
-        <div className="container">
-            <MainComponent />          
-        </div>
+        <MainComponent />
       </section>
     );
   }
