@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 // import Button from "@material-ui/core/Button";
-import { CompanyConsumer } from "./CompanyContext";
+import { CompanyConsumer } from "../CompanyContext";
 
 class CompanySearchComponent extends Component {
   render() {

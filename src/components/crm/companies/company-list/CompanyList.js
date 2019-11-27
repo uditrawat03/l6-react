@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CompanyListComponent from "./CompanyListComponent";
 import { getMethod } from "../../../../services/ApiService";
 import CompanySearchComponent from "./CompanySearchComponent";
-import { CompanyProvider } from "./CompanyContext";
+import { CompanyProvider } from "../CompanyContext";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -44,11 +44,7 @@ class CompanyList extends Component {
           <div className="columns">
             <div className="column">
               <div className="box">
-                <CompanyListComponent
-                  companies={this.state.companies}
-                  getCompanies={this.getCompanies}
-                  isLoader={this.state.isLoader}
-                />
+                <CompanyListComponent />
               </div>
             </div>
             <div className="column is-one-third">

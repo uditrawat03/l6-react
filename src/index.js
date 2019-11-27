@@ -6,13 +6,16 @@ import { UserProvider } from "./context/UserContext";
 import { MenuProvider } from "./context/MenuContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
+import { MasterProvider } from "./context/MasterContext";
 
 ReactDOM.render(
   <UserProvider>
     <MenuProvider>
-      <Router>
-        <App />
-      </Router>
+      <MasterProvider>
+        <Router>
+          <App />
+        </Router>
+      </MasterProvider>
     </MenuProvider>
   </UserProvider>,
   document.getElementById("root")

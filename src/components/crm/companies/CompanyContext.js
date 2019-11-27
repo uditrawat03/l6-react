@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { postMethod } from "../../../../services/ApiService";
+import { postMethod } from "../../../services/ApiService";
 
 const CompanyContext = React.createContext();
 
@@ -18,7 +18,12 @@ class CompanyProvider extends Component {
       columns: [
         { name: "Code", field: "code" },
         { name: "Name", field: "name" }
-      ]
+      ],
+      masters: {
+        companySource: [],
+        companyClass: [],
+        companyImportance: []
+      }
     };
   }
 
@@ -67,7 +72,8 @@ class CompanyProvider extends Component {
           ...this.state,
           getCompanies: this.getCompanies,
           handleSearch: this.handleSearch,
-          handleOnChange: this.handleOnChange
+          handleOnChange: this.handleOnChange,
+          getMasters: this.getMasters
         }}
       >
         {this.props.children}

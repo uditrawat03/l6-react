@@ -1,2 +1,15 @@
-@import '../node_modules/bulma/css/bulma.min.css';
-@import '../src/components/layouts/header/header.css';
+@import "../node_modules/bulma/css/bulma.min.css";
+@import "../src/components/layouts/header/header.css";
+
+.MuiInputBase-root {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: text;
+  display: inline-flex;
+  position: relative;
+  font-size: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.1875em;
+  min-width: 300px;
+}

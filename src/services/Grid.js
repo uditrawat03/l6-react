@@ -8,7 +8,6 @@ import {
   TablePagination
 } from "@material-ui/core";
 import Loader from "../components/layouts/loader/Loader";
-import { getMethod } from "./ApiService";
 
 export class Grid extends Component {
   constructor(props) {
