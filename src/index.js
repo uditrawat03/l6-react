@@ -1,18 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+
 import App from "./App";
 import { UserProvider } from "./context/UserContext";
 import { MenuProvider } from "./context/MenuContext";
-import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { MasterProvider } from "./context/MasterContext";
+import rootReducer from "./rootReducer";
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
   <UserProvider>
     <MenuProvider>
       <MasterProvider>
         <Router>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </Router>
       </MasterProvider>
     </MenuProvider>
