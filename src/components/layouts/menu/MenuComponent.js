@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { MenuConsumer } from "../../../context/MenuContext";
 
-export class MenuComponent extends Component {
+class MenuComponent extends Component {
   handleLogout = () => {
     // auth.logout();
     this.props.history.push("/");

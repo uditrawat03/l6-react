@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import Loader from "../components/layouts/loader/Loader";
 
-export class Grid extends Component {
+class Grid extends Component {
   constructor(props) {
     super(props);
 

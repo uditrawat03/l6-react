@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CreateCompanyComponent from "./CreateCompanyComponent";
 import { MasterConsumer } from "../../../../context/MasterContext";
 
-export class CreateCompany extends Component {
+class CreateCompany extends Component {
   render() {
     return (
       <MasterConsumer>

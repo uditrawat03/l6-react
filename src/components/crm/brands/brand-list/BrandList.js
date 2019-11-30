@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
-import BrandListComponent from './BrandListComponent'
+import React, { Component } from "react";
+import BrandListComponent from "./BrandListComponent";
 
-export class BrandList extends Component {
-    render() {
-        return (
-            <BrandListComponent />
-        )
-    }
+class BrandList extends Component {
+  render() {
+    return <BrandListComponent />;
+  }
 }
 
-export default BrandList
+export default BrandList;

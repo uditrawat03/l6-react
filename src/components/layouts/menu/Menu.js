@@ -1,12 +1,8 @@
-import React, { Component } from 'react'
-import MenuComponent from './MenuComponent'
+import React from "react";
+import MenuComponent from "./MenuComponent";
 
-export class Menu extends Component {
-    render() {
-        return (
-            <MenuComponent />
-        )
-    }
-}
+const Menu = () => {
+  return <MenuComponent />;
+};
 
-export default Menu
+export default Menu;

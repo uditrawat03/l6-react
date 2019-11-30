@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import LoaderComponent from './LoaderComponent';
+import React, { Component } from "react";
+import LoaderComponent from "./LoaderComponent";
 
-export class Loader extends Component {
-    render() {
-        return (
-            <LoaderComponent />
-        )
-    }
+class Loader extends Component {
+  render() {
+    return <LoaderComponent />;
+  }
 }
 
-export default Loader
+export default Loader;

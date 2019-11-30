@@ -6,7 +6,7 @@ import {
   NativeSelect
 } from "@material-ui/core";
 
-export class CreateCompanyComponent extends Component {
+class CreateCompanyComponent extends Component {
   constructor(props) {
     super(props);
 

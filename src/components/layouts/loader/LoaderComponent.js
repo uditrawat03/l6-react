@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./loader.scss";
 
-export class LoaderComponent extends Component {
+class LoaderComponent extends Component {
   render() {
     return (
       <div className="section">

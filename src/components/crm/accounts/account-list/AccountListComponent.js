@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-export class AccountListComponent extends Component {
-    render() {
-        return (
-            <div>
-                Account list
-            </div>
-        )
-    }
+class AccountListComponent extends Component {
+  render() {
+    return <div>Account list</div>;
+  }
 }
 
-export default AccountListComponent
+export default AccountListComponent;
