@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import HeaderComponent from "./HeaderComponent";
 
-class Header extends Component {
-  render() {
-    return <HeaderComponent />;
-  }
-}
+const Header = () => {
+  return <HeaderComponent />;
+};
 
 export default Header;
