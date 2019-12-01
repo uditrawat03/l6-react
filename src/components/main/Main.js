@@ -28,7 +28,7 @@ Main.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.user.token
+    isAuthenticated: !!state.User.token
   };
 }
 
