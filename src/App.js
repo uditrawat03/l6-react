@@ -1,17 +1,13 @@
 import React from "react";
-import "./App.css";
+import { Route } from "react-router-dom";
 import Main from "./components/main/Main";
-import Header from "./components/layouts/header/Header";
-import Footer from "./components/layouts/footer/Footer";
 
-function App() {
-  return (
-    <React.Fragment>
-      <Header />
-      <Main />
-      <Footer />
-    </React.Fragment>
-  );
-}
+import "./App.css";
+
+const App = () => (
+  <div className="container">
+    <Route path="/" component={Main} />
+  </div>
+);
 
 export default App;

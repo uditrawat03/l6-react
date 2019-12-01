@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Menu from "../menu/Menu";
 
-class HeaderComponent extends Component {
+class NavigationBarComponent extends Component {
   render() {
     const userLinks = () => {
       return <Menu />;
@@ -33,4 +33,4 @@ class HeaderComponent extends Component {
   }
 }
 
-export default HeaderComponent;
+export default NavigationBarComponent;

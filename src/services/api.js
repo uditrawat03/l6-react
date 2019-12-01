@@ -3,9 +3,9 @@ import Enviroment from "../config/enviorment";
 
 export default {
   user: {
-    login: creadentials =>
+    login: credentials =>
       axios
-        .post(Enviroment.api_url + "login", { creadentials })
+        .post(Enviroment.api_url + "login", { credentials })
         .then(res => res.data.user)
   }
 };

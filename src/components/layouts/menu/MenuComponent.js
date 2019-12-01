@@ -17,9 +17,9 @@ class MenuComponent extends Component {
     const logoutLink = () => {
       return (
         <div className="navbar-end nav-menu">
-          <a href="" className="navbar-item is-tab" onClick={this.handleLogout}>
+          <button className="navbar-item is-tab" onClick={this.handleLogout}>
             <strong>Logout</strong>
-          </a>
+          </button>
         </div>
       );
     };
@@ -34,9 +34,9 @@ class MenuComponent extends Component {
                   className="navbar-item has-dropdown is-hoverable"
                   key={menu.id}
                 >
-                  <a className="navbar-link">
+                  <button className="navbar-link">
                     <strong>{menu.name}</strong>
-                  </a>
+                  </button>
                   <div className="navbar-dropdown is-right">
                     {menu.menus.map(item => {
                       let route = `/${item.route}`.replace("\\", "/");

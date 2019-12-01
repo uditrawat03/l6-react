@@ -86,7 +86,7 @@ class Grid extends Component {
             component="div"
             count={this.props.data.total}
             rowsPerPage={
-              this.props.data.per_page == "undefined"
+              this.props.data.per_page === "undefined"
                 ? this.props.data.per_page
                 : 10
             }
