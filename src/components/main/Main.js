@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Route } from "react-router-dom";
 
 import NavigationBar from "../layouts/navbar/NavigationBar";
 import Login from "../auth/Login";
@@ -16,7 +17,7 @@ const Main = ({ isAuthenticated, logout }) => {
       </React.Fragment>
     );
   } else {
-    return <Login />;
+    return <Route component={Login} />;
   }
 };
 
@@ -27,7 +28,7 @@ Main.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.User.token
+    isAuthenticated: !!state.user.token
   };
 }
 
