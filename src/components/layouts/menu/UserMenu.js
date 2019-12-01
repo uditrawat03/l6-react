@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Menu, MenuItem, Dropdown, Image } from "semantic-ui-react";
+import { Menu, Dropdown } from "semantic-ui-react";
 
 import { MenuConsumer } from "../../../context/MenuContext";
 

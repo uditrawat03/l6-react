@@ -5,14 +5,11 @@ import gravatarUrl from "gravatar-url";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import * as actions from "../../../actions/Auth";
-import { MenuProvider, MenuConsumer } from "../../../context/MenuContext";
+import { MenuProvider } from "../../../context/MenuContext";
 
 import UserMenu from "../menu/UserMenu";
 
 const NavigationBar = ({ user, logout }) => {
-  const userLinks = () => {
-    return <UserMenu />;
-  };
   return (
     <MenuProvider>
       <Menu secondary pointing>

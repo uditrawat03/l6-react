@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
+import { Button } from "semantic-ui-react";
 import { CompanyProvider } from "../CompanyContext";
 import CompanyListComponent from "./CompanyListComponent";
 import { getMethod } from "../../../../services/ApiService";
 import CompanySearchComponent from "./CompanySearchComponent";
+
 class CompanyList extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ class CompanyList extends Component {
           <div class="row">
             <div className="thirteen wide column">
               <Link to="/crm/companies/create">
-                <Button className="button is-link">Add New</Button>
+                <Button primary>Add New</Button>
               </Link>
             </div>
           </div>
