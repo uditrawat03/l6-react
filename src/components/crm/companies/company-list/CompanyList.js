@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
 import { CompanyProvider } from "../CompanyContext";
 import CompanyListComponent from "./CompanyListComponent";
 import { getMethod } from "../../../../services/ApiService";
@@ -28,28 +29,20 @@ class CompanyList extends Component {
   render() {
     return (
       <CompanyProvider>
-        <div className="container">
-          <div className="columns">
-            <div className="column">
-              <div className="box">
-                <Link to="/crm/companies/create">
-                  <Button className="button is-link">Add New</Button>
-                </Link>
-              </div>
+        <div className="ui celled grid">
+          <div class="row">
+            <div className="thirteen wide column">
+              <Link to="/crm/companies/create">
+                <Button className="button is-link">Add New</Button>
+              </Link>
             </div>
           </div>
-        </div>
-        <div className="container">
-          <div className="columns">
-            <div className="column">
-              <div className="box">
-                <CompanyListComponent />
-              </div>
+          <div class="row">
+            <div className="ten wide column">
+              <CompanyListComponent />
             </div>
-            <div className="column is-one-third">
-              <div className="box">
-                <CompanySearchComponent />
-              </div>
+            <div className="three wide column">
+              <CompanySearchComponent />
             </div>
           </div>
         </div>

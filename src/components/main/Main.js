@@ -6,13 +6,12 @@ import { Route } from "react-router-dom";
 import NavigationBar from "../layouts/navbar/NavigationBar";
 import Login from "../auth/Login";
 import MainComponent from "./MainComponent";
-import * as actions from "../../actions/Auth";
 
 const Main = ({ isAuthenticated, logout }) => {
   if (isAuthenticated) {
     return (
       <React.Fragment>
-        <NavigationBar logout={logout} />
+        <NavigationBar />
         <MainComponent />
       </React.Fragment>
     );
@@ -32,4 +31,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { logout: actions.logout })(Main);
+export default connect(mapStateToProps)(Main);

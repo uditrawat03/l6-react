@@ -1,10 +1,15 @@
-import React, { Component } from "react";
-import LoaderComponent from "./LoaderComponent";
+import React from "react";
 
-class Loader extends Component {
-  render() {
-    return <LoaderComponent />;
-  }
-}
+const Loader = () => {
+  return (
+    <div class="ui segment">
+      <div class="ui active transition visible inverted dimmer">
+        <div class="content">
+          <div class="ui inverted text loader"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Loader;

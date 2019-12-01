@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import TextField from "@material-ui/core/TextField";
+import React from "react";
+import { Form, Button } from "semantic-ui-react";
+
 import { CompanyConsumer } from "../CompanyContext";
 
 const CompanySearchComponent = () => {
@@ -7,40 +8,29 @@ const CompanySearchComponent = () => {
     <CompanyConsumer>
       {value => {
         return (
-          <React.Fragment>
-            <h1>Search</h1>
-            <form method="post" role="form" onSubmit={value.handleSearch}>
-              <div className="field">
-                <div className="control">
-                  <TextField
-                    type="search"
-                    label="code"
-                    name="code"
-                    value={value.code}
-                    onChange={value.handleOnChange}
-                  />
-                </div>
-                <div className="control">
-                  <TextField
-                    type="search"
-                    label="Name"
-                    name="name"
-                    value={value.name}
-                    onChange={value.handleOnChange}
-                  />
-                </div>
-              </div>
-
-              <div className="field is-grouped">
-                <div className="control">
-                  <button className="button is-link">Search</button>
-                </div>
-                <div className="control">
-                  <button className="button is-link is-light">Cancel</button>
-                </div>
-              </div>
-            </form>
-          </React.Fragment>
+          <Form onSubmit={value.handleSearch}>
+            <Form.Field>
+              <label htmlFor="code">Code</label>
+              <input
+                type="search"
+                label="code"
+                name="code"
+                value={value.code}
+                onChange={value.handleOnChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="name">Name</label>
+              <input
+                type="search"
+                label="Name"
+                name="name"
+                value={value.name}
+                onChange={value.handleOnChange}
+              />
+            </Form.Field>
+            <Button primary> Search</Button>
+          </Form>
         );
       }}
     </CompanyConsumer>

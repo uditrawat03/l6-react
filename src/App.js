@@ -5,7 +5,7 @@ import Main from "./components/main/Main";
 import "./App.css";
 
 const App = () => (
-  <div className="container">
+  <div className="ui justified container">
     <Route component={Main} />
   </div>
 );

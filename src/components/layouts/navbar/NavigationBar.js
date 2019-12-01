@@ -1,42 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Menu, MenuItem, Dropdown, Image } from "semantic-ui-react";
+import gravatarUrl from "gravatar-url";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import * as actions from "../../../actions/Auth";
+import { MenuProvider, MenuConsumer } from "../../../context/MenuContext";
 
-import { MenuProvider } from "../../../context/MenuContext";
-import Menu from "../menu/Menu";
+import UserMenu from "../menu/UserMenu";
 
-const NavigationBar = props => {
+const NavigationBar = ({ user, logout }) => {
   const userLinks = () => {
-    return <Menu />;
+    return <UserMenu />;
   };
   return (
     <MenuProvider>
-      <section className="hero ">
-        <header className="hero-body">
-          <nav className="navbar has-shadow">
-            <div className="container">
-              <div className="navbar-brand">
-                <Link to="/" className="navbar-item is-paddingless brand-item">
-                  Logo
-                </Link>
-                <button className="button navbar-burger">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
-
-              <div className="navbar-menu">{userLinks()}</div>
-              <div className="navbar-end nav-menu">
-                <span className="navbar-item is-tab" onClick={props.logout}>
-                  <strong>Logout</strong>
-                </span>
-              </div>
-            </div>
-          </nav>
-        </header>
-      </section>
+      <Menu secondary pointing>
+        <MenuItem as={Link} to="/dashboard">
+          Dashboard
+        </MenuItem>
+        <UserMenu />
+        <Menu.Menu position="right">
+          <Dropdown
+            trigger={
+              <Image avatar src={gravatarUrl("udit.rawat03@gmail.com")} />
+            }
+          >
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Menu>
+      </Menu>
     </MenuProvider>
   );
 };
 
-export default NavigationBar;
+NavigationBar.propTypes = {
+  user: PropTypes.shape({
+    email: PropTypes.string
+  }).isRequired,
+  logout: PropTypes.func.isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    user: state.User
+  };
+}
+
+export default connect(mapStateToProps, { logout: actions.logout })(
+  NavigationBar
+);
