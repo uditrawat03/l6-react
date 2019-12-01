@@ -6,7 +6,7 @@ import "./App.css";
 
 const App = () => (
   <div className="container">
-    <Route path="/" component={Main} />
+    <Route component={Main} />
   </div>
 );
 

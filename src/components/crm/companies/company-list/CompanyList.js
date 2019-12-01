@@ -1,11 +1,10 @@
 import React, { Component } from "react";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { CompanyProvider } from "../CompanyContext";
 import CompanyListComponent from "./CompanyListComponent";
 import { getMethod } from "../../../../services/ApiService";
 import CompanySearchComponent from "./CompanySearchComponent";
-import { CompanyProvider } from "../CompanyContext";
-import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-
 class CompanyList extends Component {
   constructor(props) {
     super(props);

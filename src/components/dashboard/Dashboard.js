@@ -8,8 +8,7 @@ const Dashboard = () => {
           <h1 className="title is-size-4">Bulma?</h1>
           <p className="is-size-5">
             Bulma is a modern CSS framework from @jgthms, based on Flexbox.
-            Using Bulma, we can describe our website's design using just
-            classes. ᕕ( ᐛ )ᕗ
+            Using Bulma,
           </p>
         </div>
       </div>
@@ -18,8 +17,7 @@ const Dashboard = () => {
           <h1 className="title is-size-4">Bulma?</h1>
           <p className="is-size-5">
             Bulma is a modern CSS framework from @jgthms, based on Flexbox.
-            Using Bulma, we can describe our website's design using just
-            classes. ᕕ( ᐛ )ᕗ
+            Using Bulma
           </p>
         </div>
       </div>
@@ -28,8 +26,7 @@ const Dashboard = () => {
           <h1 className="title is-size-4">Bulma?</h1>
           <p className="is-size-5">
             Bulma is a modern CSS framework from @jgthms, based on Flexbox.
-            Using Bulma, we can describe our website's design using just
-            classes. ᕕ( ᐛ )ᕗ
+            Using Bulma\
           </p>
         </div>
       </div>

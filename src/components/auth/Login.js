@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
+import LoginForm from "./LoginForm";
 import { login } from "../../actions/Auth";
 
-export class Login extends Component {
+class Login extends Component {
   submit = data =>
     this.props.login(data).then(() => this.props.history.push("/"));
 
