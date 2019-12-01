@@ -1,5 +1,5 @@
 @import "../node_modules/bulma/css/bulma.min.css";
-@import "../src/components/layouts/header/header.css";
+@import "../src/components/layouts/navbar/header.css";
 
 .MuiInputBase-root {
   color: rgba(0, 0, 0, 0.87);

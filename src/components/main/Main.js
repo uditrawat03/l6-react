@@ -5,12 +5,13 @@ import PropTypes from "prop-types";
 import NavigationBar from "../layouts/navbar/NavigationBar";
 import Login from "../auth/Login";
 import MainComponent from "./MainComponent";
+import * as actions from "../../actions/Auth";
 
-const Main = ({ isAuthenticated }) => {
+const Main = ({ isAuthenticated, logout }) => {
   if (isAuthenticated) {
     return (
       <React.Fragment>
-        <NavigationBar />
+        <NavigationBar logout={logout} />
         <MainComponent />
       </React.Fragment>
     );
@@ -20,13 +21,14 @@ const Main = ({ isAuthenticated }) => {
 };
 
 Main.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired
+  isAuthenticated: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.user
+    isAuthenticated: !!state.User.token
   };
 }
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, { logout: actions.logout })(Main);

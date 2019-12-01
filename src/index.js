@@ -9,11 +9,17 @@ import * as serviceWorker from "./serviceWorker";
 
 import App from "./App";
 import rootReducer from "./rootReducer";
+import { userLoggedIn } from "./actions/Auth";
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+if (localStorage.authJWT) {
+  const user = { token: localStorage.authJWT };
+  store.dispatch(userLoggedIn(user));
+}
 
 ReactDOM.render(
   <Router>
