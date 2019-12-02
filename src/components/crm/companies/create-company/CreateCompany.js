@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CreateCompanyComponent from "./CreateCompanyComponent";
 import { MasterConsumer } from "../../../../context/MasterContext";
+import { Segment } from "semantic-ui-react";
 
 class CreateCompany extends Component {
   render() {
@@ -8,13 +9,15 @@ class CreateCompany extends Component {
       <MasterConsumer>
         {value => {
           return (
-            <div className="ui celled grid">
+            <div className="ui grid">
               <div class="row">
                 <div className="column">
-                  <CreateCompanyComponent
-                    getMasters={value.getMasters}
-                    masters={value.masters}
-                  />
+                  <Segment>
+                    <CreateCompanyComponent
+                      getMasters={value.getMasters}
+                      masters={value.masters}
+                    />
+                  </Segment>
                 </div>
               </div>
             </div>

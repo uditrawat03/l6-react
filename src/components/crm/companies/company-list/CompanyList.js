@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "semantic-ui-react";
+import { Button, Segment } from "semantic-ui-react";
 import { CompanyProvider } from "../CompanyContext";
 import CompanyListComponent from "./CompanyListComponent";
 import { getMethod } from "../../../../services/ApiService";
@@ -31,18 +31,24 @@ class CompanyList extends Component {
       <CompanyProvider>
         <div className="ui grid">
           <div class="row">
-            <div className="thirteen wide column">
-              <Link to="/crm/companies/create">
-                <Button primary>Add New</Button>
-              </Link>
+            <div className="sixteen wide column">
+              <Segment>
+                <Link to="/crm/companies/create">
+                  <Button primary>Add New</Button>
+                </Link>
+              </Segment>
             </div>
           </div>
           <div class="row">
             <div className="eleven wide column">
-              <CompanyListComponent />
+              <Segment>
+                <CompanyListComponent />
+              </Segment>
             </div>
             <div className="five wide column">
-              <CompanySearchComponent />
+              <Segment>
+                <CompanySearchComponent />
+              </Segment>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ const NavigationBar = ({ user, logout }) => {
   return (
     <MenuProvider>
       <Menu fixed="top" inverted>
-        <Container>
+        <Container fluid>
           <MenuItem as={Link} to="/dashboard">
             Dashboard
           </MenuItem>
