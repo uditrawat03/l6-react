@@ -8,15 +8,13 @@ class CreateCompany extends Component {
       <MasterConsumer>
         {value => {
           return (
-            <div className="container">
-              <div className="columns">
+            <div className="ui celled grid">
+              <div class="row">
                 <div className="column">
-                  <div className="box">
-                    <CreateCompanyComponent
-                      getMasters={value.getMasters}
-                      masters={value.masters}
-                    />
-                  </div>
+                  <CreateCompanyComponent
+                    getMasters={value.getMasters}
+                    masters={value.masters}
+                  />
                 </div>
               </div>
             </div>

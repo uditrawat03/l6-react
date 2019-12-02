@@ -6,13 +6,19 @@ import { Route } from "react-router-dom";
 import NavigationBar from "../layouts/navbar/NavigationBar";
 import Login from "../auth/Login";
 import MainComponent from "./MainComponent";
+import { MasterProvider } from "../../context/MasterContext";
+import { Container } from "semantic-ui-react";
 
 const Main = ({ isAuthenticated, logout }) => {
   if (isAuthenticated) {
     return (
       <React.Fragment>
         <NavigationBar />
-        <MainComponent />
+        <Container style={{ marginTop: "7em" }}>
+          <MasterProvider>
+            <MainComponent />
+          </MasterProvider>
+        </Container>
       </React.Fragment>
     );
   } else {

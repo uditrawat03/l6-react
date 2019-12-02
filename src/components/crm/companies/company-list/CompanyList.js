@@ -29,7 +29,7 @@ class CompanyList extends Component {
   render() {
     return (
       <CompanyProvider>
-        <div className="ui celled grid">
+        <div className="ui grid">
           <div class="row">
             <div className="thirteen wide column">
               <Link to="/crm/companies/create">
@@ -38,10 +38,10 @@ class CompanyList extends Component {
             </div>
           </div>
           <div class="row">
-            <div className="ten wide column">
+            <div className="eleven wide column">
               <CompanyListComponent />
             </div>
-            <div className="three wide column">
+            <div className="five wide column">
               <CompanySearchComponent />
             </div>
           </div>

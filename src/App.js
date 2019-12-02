@@ -4,10 +4,6 @@ import Main from "./components/main/Main";
 
 import "./App.css";
 
-const App = () => (
-  <div className="ui justified container">
-    <Route component={Main} />
-  </div>
-);
+const App = () => <Route component={Main} />;
 
 export default App;

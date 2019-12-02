@@ -10,12 +10,7 @@ class Login extends Component {
     this.props.login(data).then(() => this.props.history.push("/"));
 
   render() {
-    return (
-      <div>
-        <h1>Login</h1>
-        <LoginForm submit={this.submit} />
-      </div>
-    );
+    return <LoginForm submit={this.submit} />;
   }
 }
 

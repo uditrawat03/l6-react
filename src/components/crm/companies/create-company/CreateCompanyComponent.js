@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  TextField,
-  FormControl,
-  InputLabel,
-  NativeSelect
-} from "@material-ui/core";
+import { Dropdown, Form, Button } from "semantic-ui-react";
 
 class CreateCompanyComponent extends Component {
   constructor(props) {
@@ -14,7 +9,9 @@ class CreateCompanyComponent extends Component {
       masters: {
         companySource: [],
         companyImportance: [],
-        companyClass: []
+        companyClass: [],
+        code: "",
+        name: ""
       }
     };
   }
@@ -30,69 +27,67 @@ class CreateCompanyComponent extends Component {
   }
 
   render() {
+    const { code, name } = this.state;
+    const friendOptions = [
+      {
+        key: "Jenny Hess",
+        text: "Jenny Hess",
+        value: "Jenny Hess",
+        image: { avatar: true, src: "/images/avatar/small/jenny.jpg" }
+      },
+      {
+        key: "Elliot Fu",
+        text: "Elliot Fu",
+        value: "Elliot Fu",
+        image: { avatar: true, src: "/images/avatar/small/elliot.jpg" }
+      },
+      {
+        key: "Stevie Feliciano",
+        text: "Stevie Feliciano",
+        value: "Stevie Feliciano",
+        image: { avatar: true, src: "/images/avatar/small/stevie.jpg" }
+      },
+      {
+        key: "Christian",
+        text: "Christian",
+        value: "Christian",
+        image: { avatar: true, src: "/images/avatar/small/christian.jpg" }
+      },
+      {
+        key: "Matt",
+        text: "Matt",
+        value: "Matt",
+        image: { avatar: true, src: "/images/avatar/small/matt.jpg" }
+      },
+      {
+        key: "Justen Kitsune",
+        text: "Justen Kitsune",
+        value: "Justen Kitsune",
+        image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
+      }
+    ];
     return (
-      <form>
-        <div className="field">
-          <div className="columns">
-            <div className="column">
-              <TextField type="search" label="Code" name="code" />
-            </div>
-            <div className="column">
-              <TextField type="search" label="Name" name="name" />
-            </div>
-            <div className="column">
-              {/* <TextField type="search" label="code" name="code" /> */}
-            </div>
-          </div>
-          <div className="columns">
-            <div className="column">
-              <FormControl className="">
-                <InputLabel htmlFor="name-native-disabled">Class</InputLabel>
-                <NativeSelect>
-                  <option value="" />
-                  {this.state.masters.companyClass.map(companyClass => {
-                    return (
-                      <option key={companyClass.id}>{companyClass.name}</option>
-                    );
-                  })}
-                </NativeSelect>
-              </FormControl>
-            </div>
-            <div className="column">
-              <FormControl className="">
-                <InputLabel htmlFor="name-native-disabled">Source</InputLabel>
-                <NativeSelect>
-                  <option value="" />
-                  {this.state.masters.companySource.map(source => {
-                    return <option key={source.id}>{source.name}</option>;
-                  })}
-                </NativeSelect>
-              </FormControl>
-            </div>
-            <div className="column">
-              <FormControl className="">
-                <InputLabel htmlFor="name-native-disabled">
-                  Importance
-                </InputLabel>
-                <NativeSelect>
-                  <option value="" />
-                  {this.state.masters.companyImportance.map(source => {
-                    return <option key={source.id}>{source.name}</option>;
-                  })}
-                </NativeSelect>
-              </FormControl>
-            </div>
-          </div>
-        </div>
-        <div className="field is-grouped">
-          <div className="control">
-            <button className="button is-link">Search</button>
-          </div>
-          <div className="control">
-            <button className="button is-link is-light">Cancel</button>
-          </div>
-        </div>
-      </form>
+      <Form>
+        <Form.Field>
+          <label htmlFor="code">Code</label>
+          <input type="search" label="code" name="code" value={code} />
+        </Form.Field>
+        <Form.Field>
+          <label htmlFor="name">Name</label>
+          <input type="search" label="Name" name="name" value={name} />
+        </Form.Field>
+        <Form.Field>
+          <label htmlFor="companySource">Company Source</label>
+          <Dropdown
+            selection
+            fluid
+            placeholder="Company Search"
+            options={friendOptions}
+            name="companySource"
+          />
+        </Form.Field>
+        <Button primary> Search</Button>
+      </Form>
     );
   }
 }
