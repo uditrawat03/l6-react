@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  TablePagination
-} from "@material-ui/core";
-import Loader from "../components/layouts/loader/Loader";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-balham.css";
+
+// import Loader from "../components/layouts/loader/Loader";
 
 class Grid extends Component {
   constructor(props) {
@@ -43,60 +39,27 @@ class Grid extends Component {
   };
 
   render() {
-    if (this.props.isLoader) {
-      return <Loader />;
-    } else {
-      let that = this;
+    const columns = [
+      { headerName: "Make", field: "make" },
+      { headerName: "Model", field: "model" },
+      { headerName: "Price", field: "price" }
+    ];
 
-      const dataGrid = this.props.data.data.map(item => {
-        return (
-          <TableRow key={item.id}>
-            {that.props.columns.map(column => {
-              return (
-                <TableCell key={column.field}>{item[column.field]}</TableCell>
-              );
-            })}
-          </TableRow>
-        );
-      });
+    const rows = [
+      { make: "Toyota", model: "Celica", price: 35000 },
+      { make: "Ford", model: "Mondeo", price: 32000 },
+      { make: "Porsche", model: "Boxter", price: 72000 }
+    ];
 
-      const tableHeader = this.props.columns.map(column => {
-        return (
-          <TableCell
-            key={column.field}
-            onClick={() => {
-              this.handleSorting(column.field);
-            }}
-          >
-            {column.name}
-          </TableCell>
-        );
-      });
-
-      return (
-        <div>
-          <Table stickyHeader>
-            <TableHead>
-              <TableRow>{tableHeader}</TableRow>
-            </TableHead>
-            <TableBody>{dataGrid}</TableBody>
-          </Table>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 50, 100]}
-            component="div"
-            count={this.props.data.total}
-            rowsPerPage={
-              this.props.data.per_page === "undefined"
-                ? this.props.data.per_page
-                : 10
-            }
-            page={this.props.data.current_page - 1}
-            onChangePage={this.handleChangePage}
-            onChangeRowsPerPage={this.handleChangeRowsPerPage}
-          />
-        </div>
-      );
-    }
+    return (
+      <div className="ag-theme-balham" style={{ height: "200px" }}>
+        <AgGridReact
+          enableSorting={true}
+          columnDefs={columns}
+          rowData={rows}
+        ></AgGridReact>
+      </div>
+    );
   }
 }
 
