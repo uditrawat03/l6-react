@@ -2,7 +2,7 @@ import React, { Component, Suspense } from "react";
 // import Grid from "../../../../services/Grid";
 import { CompanyConsumer } from "../CompanyContext";
 
-const Grid = React.lazy(() => import("../../../../services/Grid"));
+const DataGrid = React.lazy(() => import("../../../../services/DataGrid"));
 class CompanyListComponent extends Component {
   render() {
     return (
@@ -10,11 +10,9 @@ class CompanyListComponent extends Component {
         {value => {
           return (
             <Suspense fallback={<div>Loading...</div>}>
-              <Grid
-                data={value.companies}
+              <DataGrid
                 getData={value.getCompanies}
-                isLoader={value.isLoader}
-                columns={value.columns}
+                columnDefs={value.columns}
               />
             </Suspense>
           );

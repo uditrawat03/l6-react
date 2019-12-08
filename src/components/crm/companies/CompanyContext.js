@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { postMethod } from "../../../services/ApiService";
+import api from "../../../services/api";
 
 const CompanyContext = React.createContext();
 
@@ -43,18 +44,7 @@ class CompanyProvider extends Component {
   getCompanies = (page, limit) => {
     const url = `crm/companies?page=${page}&limit=${limit}`;
     const filters = { filters: this.setFilters() };
-    // if (this.state.filters.length > 0) {
-    //   filters = {};
-    // }
-
-    postMethod(url, filters).then(res => {
-      this.setState({
-        companies: res.data,
-        isLoader: false,
-        page: page,
-        limit: limit
-      });
-    });
+    return api.service.post(url, filters);
   };
 
   setFilters = () => {

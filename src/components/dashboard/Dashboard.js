@@ -1,20 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
+// import GridExample from "../../services/GridExample";
+const GridExample2 = React.lazy(() => import("../../services/GridExample2"));
 
 const Dashboard = () => {
   return (
     <div className="ui grid">
-      <div class="four wide column">
-        Bulma is a modern CSS framework from @jgthms, based on Flexbox. Using
-        Bulma,
-      </div>
-      <div class="four wide column">
-        Bulma is a modern CSS framework from @jgthms, based on Flexbox. Using
-        Bulma,
-      </div>
-      <div class="four wide column">
-        Bulma is a modern CSS framework from @jgthms, based on Flexbox. Using
-        Bulma,
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <GridExample2 />
+      </Suspense>
     </div>
   );
 };
