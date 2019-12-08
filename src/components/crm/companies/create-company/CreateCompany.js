@@ -1,29 +1,29 @@
 import React, { Component } from "react";
-import CreateCompanyComponent from "./CreateCompanyComponent";
-import { MasterConsumer } from "../../../../context/MasterContext";
 import { Segment } from "semantic-ui-react";
+import CreateCompanyComponent from "./CreateCompanyComponent";
+import CompanySearchComponent from "../company-list/CompanySearchComponent";
+import { CompanyProvider } from "../CompanyContext";
+// import { MasterConsumer } from "../../../../context/MasterContext";
 
 class CreateCompany extends Component {
   render() {
     return (
-      <MasterConsumer>
-        {value => {
-          return (
-            <div className="ui grid">
-              <div class="row">
-                <div className="column">
-                  <Segment>
-                    <CreateCompanyComponent
-                      getMasters={value.getMasters}
-                      masters={value.masters}
-                    />
-                  </Segment>
-                </div>
-              </div>
+      <CompanyProvider>
+        <div className="ui grid">
+          <div class="row">
+            <div className="eleven wide column">
+              <Segment>
+                <CreateCompanyComponent />
+              </Segment>
             </div>
-          );
-        }}
-      </MasterConsumer>
+            <div className="five wide column">
+              <Segment>
+                <CompanySearchComponent />
+              </Segment>
+            </div>
+          </div>
+        </div>
+      </CompanyProvider>
     );
   }
 }

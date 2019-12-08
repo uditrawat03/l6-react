@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { Switch } from "react-router-dom";
 import Dashboard from "../dashboard/Dashboard";
-import Company from "../crm/companies/Company";
 import BrandList from "../crm/brands/brand-list/BrandList";
 import AccountList from "../crm/accounts/account-list/AccountList";
 import CreateCompany from "../crm/companies/create-company/CreateCompany";
 import Login from "../auth/Login";
 import UserRoute from "../routes/UserRoute";
 import GuestRoute from "../routes/GuestRoute";
+import CompanyList from "../crm/companies/company-list/CompanyList";
 
 const MainComponent = ({ location }) => {
   return (
@@ -21,7 +20,7 @@ const MainComponent = ({ location }) => {
         location={location}
         exact
         path="/crm/companies"
-        component={Company}
+        component={CompanyList}
       />
       <UserRoute
         location={location}

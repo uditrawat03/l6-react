@@ -16,15 +16,7 @@ class CreateCompanyComponent extends Component {
     };
   }
 
-  componentWillMount() {
-    this.props
-      .getMasters("company-source,company-class,company-importance")
-      .then(res => {
-        this.setState({
-          masters: res.data
-        });
-      });
-  }
+  componentWillMount() {}
 
   render() {
     const { code, name } = this.state;
