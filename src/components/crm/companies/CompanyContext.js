@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { postMethod } from "../../../services/ApiService";
 import api from "../../../services/api";
 
 const CompanyContext = React.createContext();

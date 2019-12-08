@@ -1,5 +1,3 @@
-"use strict";
-
 import React, { Component } from "react";
 import { AgGridReact } from "@ag-grid-community/react";
 import { AllModules } from "@ag-grid-enterprise/all-modules";
