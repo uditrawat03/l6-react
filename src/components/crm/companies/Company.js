@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Button, Segment } from "semantic-ui-react";
+import { Segment } from "semantic-ui-react";
 import { CompanyProvider } from "./CompanyContext";
-import CompanyListComponent from "./company-list/CompanyListComponent";
+
 import CompanySearchComponent from "./company-list/CompanySearchComponent";
+import CompanyList from "./company-list/CompanyList";
+// import CreateCompany from "./create-company/CreateCompany";
 
 const Company = () => {
   return (
@@ -11,14 +12,7 @@ const Company = () => {
       <div className="ui grid">
         <div class="row">
           <div className="eleven wide column">
-            <Segment>
-              <Link to="/crm/companies/create">
-                <Button primary>Add New</Button>
-              </Link>
-            </Segment>
-            <Segment>
-              <CompanyListComponent />
-            </Segment>
+            <CompanyList />
           </div>
           <div className="five wide column">
             <Segment>
