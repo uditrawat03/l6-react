@@ -12,6 +12,6 @@ export default {
     get: (url, params) =>
       axios.get(Enviroment.api_url + url, { params }).then(res => res.data),
     post: (url, params) =>
-      axios.post(Enviroment.api_url + url, { params }).then(res => res.data)
+      axios.post(Enviroment.api_url + url, params).then(res => res.data)
   }
 };
