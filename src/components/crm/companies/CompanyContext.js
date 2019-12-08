@@ -44,7 +44,15 @@ class CompanyProvider extends Component {
   getCompanies = (page, limit) => {
     const url = `crm/companies?page=${page}&limit=${limit}`;
     const filters = { filters: this.setFilters() };
-    return api.service.post(url, filters);
+    api.service.post(url, filters).then(res => {
+      console.log(res);
+      this.setState({
+        companies: res,
+        isLoader: false,
+        page: page,
+        limit: limit
+      });
+    });
   };
 
   setFilters = () => {

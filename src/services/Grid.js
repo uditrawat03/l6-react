@@ -1,65 +1,73 @@
 import React, { Component } from "react";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  TablePagination
+} from "@material-ui/core";
+import Loader from "../components/layouts/loader/Loader";
 
-// import Loader from "../components/layouts/loader/Loader";
-
-class Grid extends Component {
+export class Grid extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: [],
-      isLoader: true,
-      page: 1,
-      limit: 10,
-      total: 0
+      data: []
     };
-  }
-
-  componentDidMount() {
-    this.props.getData(this.state.page, this.state.limit);
   }
 
   handleChangePage = (event, newPage) => {
     newPage = newPage + 1;
-    this.setState({ page: newPage });
-    this.props.getData(newPage, this.state.limit);
+    this.props.getData(newPage, this.props.data.per_page);
   };
 
   handleChangeRowsPerPage = event => {
     const limit = parseInt(event.target.value, 10);
-    this.setState({ limit: limit });
-    this.props.getData(this.state.page, limit);
-  };
-
-  handleSorting = column => {
-    console.log(column);
+    this.props.getData(1, limit);
   };
 
   render() {
-    const columns = [
-      { headerName: "Make", field: "make" },
-      { headerName: "Model", field: "model" },
-      { headerName: "Price", field: "price" }
-    ];
+    if (this.props.isLoader) {
+      this.props.getData(1, 10);
+      return <Loader />;
+    } else {
+      let that = this;
+      const dataGrid = this.props.data.data.map(item => {
+        return (
+          <TableRow key={item.id}>
+            {that.props.columns.map(column => {
+              return <TableCell>{item[column.field]}</TableCell>;
+            })}
+          </TableRow>
+        );
+      });
 
-    const rows = [
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 }
-    ];
+      const tableHeader = this.props.columns.map(column => {
+        return <TableCell>{column.name}</TableCell>;
+      });
 
-    return (
-      <div className="ag-theme-balham" style={{ height: "200px" }}>
-        <AgGridReact
-          enableSorting={true}
-          columnDefs={columns}
-          rowData={rows}
-        ></AgGridReact>
-      </div>
-    );
+      return (
+        <div>
+          <Table stickyHeader>
+            <TableHead>
+              <TableRow>{tableHeader}</TableRow>
+            </TableHead>
+            <TableBody>{dataGrid}</TableBody>
+          </Table>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 50, 100]}
+            component="div"
+            count={this.props.data.total}
+            rowsPerPage={this.props.data.per_page}
+            page={this.props.data.current_page - 1}
+            onChangePage={this.handleChangePage}
+            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+          />
+        </div>
+      );
+    }
   }
 }
 
