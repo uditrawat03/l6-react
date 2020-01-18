@@ -1,44 +1,41 @@
-import React, { Component } from 'react';
-import { getMethod } from '../services/ApiService';
+import React, { Component } from "react";
+import { getMethod } from "../services/ApiService";
 const MenuContext = React.createContext();
 
 class MenuProvider extends Component {
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             'menus': []
-        }
-    }
+  constructor(props) {
+    super(props);
 
-    componentDidMount(){
-        this.getMenu();
-    }
-    
+    this.state = {
+      menus: []
+    };
+  }
 
-    getMenu(){
-        getMethod('menus')
-        .then(res => {
-            this.setState({
-                'menus': res.data.data
-            });
-        });
-    }
+  componentDidMount() {
+    // this.getMenu();
+  }
 
-    render() {
-        return (
-            <MenuContext.Provider 
-                value={{
-                    ...this.state
-                }}
-            >
-                {this.props.children}
-            </MenuContext.Provider>
-        )
-    }
+  getMenu() {
+    getMethod("menus").then(res => {
+      this.setState({
+        menus: res.data.data
+      });
+    });
+  }
+
+  render() {
+    return (
+      <MenuContext.Provider
+        value={{
+          ...this.state
+        }}
+      >
+        {this.props.children}
+      </MenuContext.Provider>
+    );
+  }
 }
 
 const MenuConsumer = MenuContext.Consumer;
 
-
-export {MenuProvider, MenuConsumer};
+export { MenuProvider, MenuConsumer };

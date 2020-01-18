@@ -32,7 +32,7 @@ class LoginForm extends Component {
     e.preventDefault();
 
     const errors = this.validate(this.state.data);
-    this.setState({ errors: errors });
+    this.setState({ errors });
 
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });

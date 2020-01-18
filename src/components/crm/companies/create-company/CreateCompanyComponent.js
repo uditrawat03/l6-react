@@ -1,87 +1,74 @@
 import React, { Component } from "react";
-import { Dropdown, Form, Button } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import { Form, Button, Message } from "semantic-ui-react";
+import InlineError from "../../../../messages/InlineError";
 
 class CreateCompanyComponent extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    data: {
+      name: ""
+    },
+    loading: false,
+    errors: {}
+  };
 
-    this.state = {
-      masters: {
-        companySource: [],
-        companyImportance: [],
-        companyClass: [],
-        code: "",
-        name: ""
-      }
-    };
-  }
+  onChange = e =>
+    this.setState({
+      data: { ...this.state.data, [e.target.name]: e.target.value }
+    });
 
-  componentWillMount() {}
+  onSubmit = e => {
+    e.preventDefault();
+
+    const errors = this.validate(this.state.data);
+    this.setState({ errors });
+
+    if (Object.keys(errors).length === 0) {
+      this.setState({ loading: true });
+      this.props.submit(this.state.data).catch(err => {
+        // console.log(err);
+        this.setState({ errors: err.response.data, loading: false });
+      });
+    }
+  };
+
+  validate = data => {
+    const errors = {};
+    if (!data.name) errors.name = "Can't be blank";
+
+    return errors;
+  };
 
   render() {
-    const { code, name } = this.state;
-    const friendOptions = [
-      {
-        key: "Jenny Hess",
-        text: "Jenny Hess",
-        value: "Jenny Hess",
-        image: { avatar: true, src: "/images/avatar/small/jenny.jpg" }
-      },
-      {
-        key: "Elliot Fu",
-        text: "Elliot Fu",
-        value: "Elliot Fu",
-        image: { avatar: true, src: "/images/avatar/small/elliot.jpg" }
-      },
-      {
-        key: "Stevie Feliciano",
-        text: "Stevie Feliciano",
-        value: "Stevie Feliciano",
-        image: { avatar: true, src: "/images/avatar/small/stevie.jpg" }
-      },
-      {
-        key: "Christian",
-        text: "Christian",
-        value: "Christian",
-        image: { avatar: true, src: "/images/avatar/small/christian.jpg" }
-      },
-      {
-        key: "Matt",
-        text: "Matt",
-        value: "Matt",
-        image: { avatar: true, src: "/images/avatar/small/matt.jpg" }
-      },
-      {
-        key: "Justen Kitsune",
-        text: "Justen Kitsune",
-        value: "Justen Kitsune",
-        image: { avatar: true, src: "/images/avatar/small/justen.jpg" }
-      }
-    ];
+    const { data, errors, loading } = this.state;
     return (
-      <Form>
-        <Form.Field>
-          <label htmlFor="code">Code</label>
-          <input type="search" label="code" name="code" value={code} />
-        </Form.Field>
+      <Form onSubmit={this.onSubmit} loading={loading}>
+        {errors.error && (
+          <Message negative>
+            <Message.Header>Something went wrong</Message.Header>
+            <p>{errors.error}</p>
+          </Message>
+        )}
         <Form.Field>
           <label htmlFor="name">Name</label>
-          <input type="search" label="Name" name="name" value={name} />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="companySource">Company Source</label>
-          <Dropdown
-            selection
-            fluid
-            placeholder="Company Search"
-            options={friendOptions}
-            name="companySource"
+          <Form.Input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="company name"
+            value={data.name}
+            onChange={this.onChange}
           />
+          {errors.name && <InlineError text={errors.name} />}
         </Form.Field>
-        <Button primary> Search</Button>
+        <Button primary> Save</Button>
       </Form>
     );
   }
 }
+
+CreateCompanyComponent.propTypes = {
+  submit: PropTypes.func.isRequired
+};
 
 export default CreateCompanyComponent;

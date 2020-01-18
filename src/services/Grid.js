@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Table,
   TableHead,
@@ -35,11 +36,21 @@ export class Grid extends Component {
     } else {
       let that = this;
       const dataGrid = this.props.data.data.map(item => {
+        let edit = `/crm/company/edit/${item.id}`.replace("\\", "/");
+        let view = `/crm/company/detail/${item.id}`.replace("\\", "/");
         return (
           <TableRow key={item.id}>
             {that.props.columns.map(column => {
               return <TableCell>{item[column.field]}</TableCell>;
             })}
+            <TableCell>
+              <Link to={edit}>
+                <i className="edit icon"></i>edit
+              </Link>
+              <Link to={view}>
+                <i className="eye icon"></i>view
+              </Link>
+            </TableCell>
           </TableRow>
         );
       });
@@ -52,7 +63,10 @@ export class Grid extends Component {
         <div>
           <Table stickyHeader>
             <TableHead>
-              <TableRow>{tableHeader}</TableRow>
+              <TableRow>
+                {tableHeader}
+                <TableCell>Actions</TableCell>
+              </TableRow>
             </TableHead>
             <TableBody>{dataGrid}</TableBody>
           </Table>

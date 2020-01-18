@@ -27,33 +27,19 @@ class CompanyProvider extends Component {
     };
   }
 
-  handleOnChange = event => {
-    const { name, value, type, checked } = event.target;
-    console.log(name, type);
-    type === "checked"
-      ? this.setState({ [name]: checked })
-      : this.setState({ [name]: value });
-  };
-
-  handleSearch = event => {
-    event.preventDefault();
-    this.getCompanies(this.state.page, this.state.limit);
-  };
-
   getCompanies = (page, limit) => {
     const url = `crm/companies`;
     const filters = {
       filters: this.setFilters(),
-      page: page,
-      limit: limit
+      page,
+      limit
     };
     api.service.post(url, filters).then(res => {
-      console.log(res);
       this.setState({
         companies: res,
         isLoader: false,
-        page: page,
-        limit: limit
+        page,
+        limit
       });
     });
   };
@@ -64,6 +50,24 @@ class CompanyProvider extends Component {
       code: this.state.code
     };
     return filters;
+  };
+
+  handleOnChange = event => {
+    const { name, value, type, checked } = event.target;
+
+    type === "checked"
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
+  };
+
+  handleSearch = event => {
+    event.preventDefault();
+    this.getCompanies(this.state.page, this.state.limit);
+  };
+
+  submit = data => {
+    const url = `crm/companies/add`;
+    return api.service.post(url, data);
   };
 
   render() {

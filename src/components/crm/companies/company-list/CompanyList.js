@@ -9,7 +9,7 @@ const CompanyList = () => {
   return (
     <CompanyProvider>
       <div className="ui grid">
-        <div class="row">
+        <div className="row">
           <div className="eleven wide column">
             <Segment>
               <Link to="/crm/companies/create">

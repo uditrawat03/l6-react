@@ -10,7 +10,7 @@ const UserMenu = () => {
       {value => {
         return value.menus.map(menu => {
           return (
-            <Dropdown text={menu.name} key={menu.key} item simple>
+            <Dropdown text={menu.name} key={menu.id} item simple>
               <Dropdown.Menu>
                 {menu.menus.map(item => {
                   let route = `/${item.route}`.replace("\\", "/");

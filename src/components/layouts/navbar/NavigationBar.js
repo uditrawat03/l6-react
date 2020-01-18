@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import * as actions from "../../../actions/Auth";
 import { MenuProvider } from "../../../context/MenuContext";
-
-import UserMenu from "../menu/UserMenu";
+import TopMenu from "../menu/TopMenu";
+// import UserMenu from "../menu/UserMenu";
 
 const NavigationBar = ({ user, logout }) => {
   return (
@@ -17,7 +17,8 @@ const NavigationBar = ({ user, logout }) => {
           <MenuItem as={Link} to="/dashboard">
             Dashboard
           </MenuItem>
-          <UserMenu />
+          {/* <UserMenu /> */}
+          <TopMenu />
           <Menu.Menu position="right">
             <Dropdown
               trigger={
@@ -25,7 +26,6 @@ const NavigationBar = ({ user, logout }) => {
               }
               item
               simple
-              text="Dropdown"
             >
               <Dropdown.Menu>
                 <Dropdown.Item onClick={() => logout()}>Logout</Dropdown.Item>
