@@ -7,8 +7,8 @@ import Login from "../auth/Login";
 import Dashboard from "../dashboard/Dashboard";
 import ProjectCreate from "../project/project-create/ProjectCreate";
 import ProjectDetail from "../project/project-detail/ProjectDetail";
-
 import TaskCreate from "../task/task-create/TaskCreate";
+import TaskDetail from "../task/task-detail/TaskDetail";
 
 /*
 import BrandList from "../crm/brands/brand-list/BrandList";
@@ -29,7 +29,7 @@ const MainComponent = ({ location }) => {
       <UserRoute
         location={location}
         exact
-        path="/project/:id"
+        path="/project/detail/:id"
         component={ProjectDetail}
       />
       <UserRoute
@@ -50,6 +50,13 @@ const MainComponent = ({ location }) => {
         exact
         path="/task/create/:project_id"
         component={TaskCreate}
+      />
+
+      <UserRoute
+        location={location}
+        exact
+        path="/task/detail/:id"
+        component={TaskDetail}
       />
 
       {/* <UserRoute location={location} exact path="/module" component={Module} /> */}

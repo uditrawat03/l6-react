@@ -9,7 +9,10 @@ const ProjectCard = ({ project }) => {
       <div className="content">
         <div className="header">{project.title}</div>
         <div className="extra content">
-          <Link to={`/project/${project.id}`} className="ui basic button green">
+          <Link
+            to={`/project/edit/${project.id}`}
+            className="ui basic button green"
+          >
             Edit
           </Link>
         </div>

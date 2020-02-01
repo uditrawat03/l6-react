@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
-import { Container } from "semantic-ui-react";
+import { Segment, Container } from "semantic-ui-react";
 
 import NavigationBar from "../layouts/navbar/NavigationBar";
 import Login from "../auth/Login";
@@ -12,14 +12,14 @@ import { MasterProvider } from "../../context/MasterContext";
 const Main = ({ isAuthenticated }) => {
   if (isAuthenticated) {
     return (
-      <React.Fragment>
+      <Container fluid>
         <NavigationBar />
-        <Container style={{ marginTop: "7em" }}>
+        <Segment basic style={{ marginTop: "7em" }}>
           <MasterProvider>
             <MainComponent />
           </MasterProvider>
-        </Container>
-      </React.Fragment>
+        </Segment>
+      </Container>
     );
   } else {
     return <Route component={Login} />;

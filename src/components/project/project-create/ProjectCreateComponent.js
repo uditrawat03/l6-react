@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Button, Message, Dropdown } from "semantic-ui-react";
-import PropTypes from "prop-types";
 import InlineError from "../../../messages/InlineError";
 
 class ProjectCreateComponent extends Component {
@@ -112,10 +111,10 @@ class ProjectCreateComponent extends Component {
   }
 }
 
-ProjectCreateComponent.propTypes = {
-  submit: PropTypes.func.isRequired,
-  users: PropTypes.shape([]).isRequired,
-  project: PropTypes.shape({}).isRequired
-};
+// ProjectCreateComponent.propTypes = {
+//   submit: PropTypes.func.isRequired,
+//   users: PropTypes.shape([]).isRequired,
+//   project: PropTypes.shape({}).isRequired
+// };
 
 export default ProjectCreateComponent;
