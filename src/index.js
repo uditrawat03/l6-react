@@ -24,6 +24,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
+// React contaxt
 // ReactDOM.render(
 //   <UserProvider>
 //     <MenuProvider>
